@@ -33,12 +33,36 @@ function showboard() # To know who play
 {
    if [[ $player == "User" ]]
    then
-      user
+      userPlay
 	else
-		computer
+		computerPlay
    fi
 }
+#  For user play
+function printboard()
+{
+		player="User"
+		if [[ $cell_Count -lt $max_Cell ]]
+		then
+				read -p "Enter Number Between 1 to 9:" position
+				if [[ ${board[$position-1]} -eq $position ]]
+				then
+						board[$position-1]=$user
+						((cell_Count++))
+						
+						
+				else
+						echo "Invalid Cell"
+										fi
+		
+		else
+				echo "  Game Tie !!"
+				exit
+		fi
+}
+
 #  Main function call
 displayBoard
 chooseplayer
 showboard
+printboard
